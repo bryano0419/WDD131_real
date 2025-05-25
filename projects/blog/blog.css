@@ -1,0 +1,110 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header & Navigation */
+header {
+    background-color: #AF1B3F;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #473144;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; /* Moves buttons to far right */
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Accessibility: Skip to Content */
+.skiptocontent {
+    position: absolute;
+    top: -40px;
+}
+
+.skiptocontent a:focus {
+    top: 0;
+}
+
+/* Page Layout */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Book Review Section */
+.book-review {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 20px;
+    background: white;
+    align-items: center;
+    border: none; /* Removed border outline */
+}
+
+/* Book Info */
+.book-info {
+    font-size: 14px;
+    color: #473144;
+}
+
+/* Book Details */
+.book-details {
+    text-align: center;
+}
+
+.book-cover {
+    width: 200px;
+    height: 300px;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Filter Sidebar */
+.filters {
+    padding: 20px;
+    background: white;
+    border: none; /* Removed border outline */
+}
+
+.filters p {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #AF1B3F;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
