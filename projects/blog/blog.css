@@ -1,99 +1,191 @@
 body {
-    font-family: Helvetica, Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5efe6;
+  color: #d35400;
 }
 
-/* Header & Navigation */
 header {
-    background-color: #AF1B3F;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 2px solid #473144;
+  background-color: #d35400;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end; /* Moves buttons to far right */
-    gap: 20px;
+.top-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #f5efe6;
+  border-bottom: 1px solid #d35400;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+.top-nav button {
+  background-color: #ffffff;
+  border: 2px solid #d35400;
+  color: #d35400;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(211, 84, 0, 0.3);
 }
 
-/* Accessibility: Skip to Content */
-.skiptocontent {
-    position: absolute;
-    top: -40px;
+.top-nav button:hover {
+  background-color: #e67e22;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(230, 126, 34, 0.7);
 }
 
-.skiptocontent a:focus {
-    top: 0;
+.layout {
+  display: flex;
+  padding: 1rem;
 }
 
-/* Page Layout */
-.content-wrapper {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+#articles-container {
+  flex: 1;
+  display: grid;
+  gap: 1rem;
 }
 
-/* Book Review Section */
 .book-review {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    padding: 20px;
-    background: white;
-    align-items: center;
-    border: none; /* Removed border outline */
+  border: 1px solid #d35400;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 2px 2px 6px rgba(211, 84, 0, 0.3);
+  color: #5a3e1b;
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  gap: 1rem;
 }
 
-/* Book Info */
+.book-review:hover {
+  box-shadow: 4px 4px 12px rgba(230, 126, 34, 0.5);
+}
+
 .book-info {
-    font-size: 14px;
-    color: #473144;
+  flex: 0 0 180px;
+  text-align: left;
+  font-style: italic;
+  color: #d35400;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  padding-top: 0.5rem;
 }
 
-/* Book Details */
+.book-info p {
+  margin: 0;
+}
+
 .book-details {
-    text-align: center;
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-details h2 {
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  color: #d35400;
 }
 
 .book-cover {
-    width: 200px;
-    height: 300px;
-    display: block;
-    margin: 10px auto;
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px rgba(211, 84, 0, 0.5);
+  margin: 0 0 1rem 0;
+  display: block;
 }
 
-/* Filter Sidebar */
+.book-details p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #5a3e1b;
+}
+
 .filters {
-    padding: 20px;
-    background: white;
-    border: none; /* Removed border outline */
+  width: 250px;
+  padding: 1rem;
+  margin-left: 1rem;
+  background-color: #f5efe6;
+  border-left: 1px solid #d35400;
+  border-radius: 6px;
+  color: #d35400;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
-.filters p {
-    text-align: center;
-    font-weight: bold;
+.filters h2 {
+  margin-top: 0;
+  font-weight: 700;
+  color: #d35400;
 }
 
-/* Footer */
+#filter-button {
+  background-color: #d35400;
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(211, 84, 0, 0.5);
+}
+
+#filter-button:hover {
+  background-color: #e67e22;
+  box-shadow: 0 4px 8px rgba(230, 126, 34, 0.7);
+}
+
+.top-nav-buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.top-nav-buttons button {
+  background-color: #ffffff;
+  border: 2px solid #d35400;
+  color: #d35400;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(211, 84, 0, 0.3);
+}
+
+.top-nav-buttons button:hover {
+  background-color: #e67e22;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(230, 126, 34, 0.7);
+}
+
 footer {
-    text-align: center;
-    padding: 10px;
-    background: #AF1B3F;
-    color: white;
+  background-color: #d35400;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 2px solid #f5efe6;
 }
 
 
