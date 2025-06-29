@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (halfStar) {
       const star = document.createElement("span");
       star.setAttribute("aria-hidden", "true");
-      star.textContent = "⭐";
+      star.textContent = "⯨"; // Unicode half star alternative
       ratingSpan.appendChild(star);
     }
     const emptyStars = totalStars - fullStars - (halfStar ? 1 : 0);
@@ -72,31 +72,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderRecipes(recipesToRender) {
     recipesSection.innerHTML = "";
+    if (recipesToRender.length === 0) {
+      const noResults = document.createElement("p");
+      noResults.textContent = "No recipes found.";
+      noResults.style.fontSize = "1.25rem";
+      noResults.style.textAlign = "center";
+      noResults.style.marginTop = "2rem";
+      recipesSection.appendChild(noResults);
+      return;
+    }
     recipesToRender.forEach((recipe) => {
       const card = createRecipeCard(recipe);
-      if (recipe.name === "Apple Crisp") {
-        card.classList.add("visible");
-      }
-
+      card.classList.add("visible");
       recipesSection.appendChild(card);
     });
   }
 
+  // Render all recipes on page load, all visible
   renderRecipes(recipes);
 
   searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const query = searchInput.value.toLowerCase();
+    const query = searchInput.value.toLowerCase().trim();
 
     const filteredRecipes = recipes.filter((recipe) =>
       recipe.name.toLowerCase().includes(query)
     );
 
-    recipesSection.innerHTML = "";
-    filteredRecipes.forEach((recipe) => {
-      const card = createRecipeCard(recipe);
-      card.classList.add("visible");
-      recipesSection.appendChild(card);
-    });
+    renderRecipes(filteredRecipes);
   });
 });
