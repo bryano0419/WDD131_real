@@ -58,9 +58,96 @@ document.addEventListener("DOMContentLoaded", () => {
     desc.classList.add("description");
     desc.textContent = recipe.description;
 
+    // Container for extended details, initially hidden
+    const extendedDetails = document.createElement("div");
+    extendedDetails.classList.add("extended-details");
+    extendedDetails.style.display = "none";
+    extendedDetails.style.marginTop = "1rem";
+
+    // Prep time and cook time
+    const times = document.createElement("p");
+    times.innerHTML = `<strong>Prep Time:</strong> ${recipe.prepTime || "N/A"} | <strong>Cook Time:</strong> ${recipe.cookTime || "N/A"}`;
+    extendedDetails.appendChild(times);
+
+    // Yield
+    if (recipe.recipeYield) {
+      const yieldP = document.createElement("p");
+      yieldP.innerHTML = `<strong>Yield:</strong> ${recipe.recipeYield}`;
+      extendedDetails.appendChild(yieldP);
+    }
+
+    // Author
+    if (recipe.author) {
+      const authorP = document.createElement("p");
+      authorP.innerHTML = `<strong>Author:</strong> ${recipe.author}`;
+      extendedDetails.appendChild(authorP);
+    }
+
+    // Ingredients list
+    if (recipe.recipeIngredient && recipe.recipeIngredient.length > 0) {
+      const ingredientsTitle = document.createElement("h3");
+      ingredientsTitle.textContent = "Ingredients:";
+      extendedDetails.appendChild(ingredientsTitle);
+
+      const ulIngredients = document.createElement("ul");
+      recipe.recipeIngredient.forEach((ing) => {
+        const li = document.createElement("li");
+        li.textContent = ing;
+        ulIngredients.appendChild(li);
+      });
+      extendedDetails.appendChild(ulIngredients);
+    }
+
+    // Instructions list
+    if (recipe.recipeInstructions && recipe.recipeInstructions.length > 0) {
+      const instructionsTitle = document.createElement("h3");
+      instructionsTitle.textContent = "Instructions:";
+      extendedDetails.appendChild(instructionsTitle);
+
+      const olInstructions = document.createElement("ol");
+      recipe.recipeInstructions.forEach((step) => {
+        const li = document.createElement("li");
+        li.textContent = step;
+        olInstructions.appendChild(li);
+      });
+      extendedDetails.appendChild(olInstructions);
+    }
+
+    // Show More / Show Less button
+    const toggleButton = document.createElement("button");
+    toggleButton.textContent = "Show More";
+    toggleButton.style.marginTop = "1rem";
+    toggleButton.style.padding = "0.5rem 1rem";
+    toggleButton.style.cursor = "pointer";
+    toggleButton.style.backgroundColor = "#ea6a47";
+    toggleButton.style.color = "#fff";
+    toggleButton.style.border = "none";
+    toggleButton.style.borderRadius = "6px";
+    toggleButton.style.fontSize = "1rem";
+    toggleButton.style.transition = "background-color 0.3s ease";
+
+    toggleButton.addEventListener("mouseenter", () => {
+      toggleButton.style.backgroundColor = "#d2573a";
+    });
+    toggleButton.addEventListener("mouseleave", () => {
+      toggleButton.style.backgroundColor = "#ea6a47";
+    });
+
+    toggleButton.addEventListener("click", () => {
+      if (extendedDetails.style.display === "none") {
+        extendedDetails.style.display = "block";
+        toggleButton.textContent = "Show Less";
+      } else {
+        extendedDetails.style.display = "none";
+        toggleButton.textContent = "Show More";
+      }
+    });
+
     details.appendChild(title);
     details.appendChild(ratingSpan);
     details.appendChild(desc);
+    details.appendChild(toggleButton);
+    details.appendChild(extendedDetails);
 
     recipeTop.appendChild(img);
     recipeTop.appendChild(details);
@@ -89,25 +176,14 @@ document.addEventListener("DOMContentLoaded", () => {
       recipe.name.toLowerCase().includes(query)
     );
 
-    recipesSection.innerHTML = "";
-
     if (filteredRecipes.length === 0) {
-      const noResults = document.createElement("p");
-      noResults.textContent = "No recipes found. Please try a different search.";
-      noResults.style.fontSize = "1.25rem";
-      noResults.style.color = "#ea6a47";
-      noResults.style.textAlign = "center";
-      noResults.style.marginTop = "2rem";
-      recipesSection.appendChild(noResults);
+      recipesSection.innerHTML = "<p style='text-align:center; margin-top:2rem; font-size:1.25rem; color:#ea6a47;'>No recipes found. Please try a different search.</p>";
     } else {
-      filteredRecipes.forEach((recipe) => {
-        const card = createRecipeCard(recipe);
-        card.classList.add("visible");
-        recipesSection.appendChild(card);
-      });
+      renderRecipes(filteredRecipes);
     }
   });
 });
+
 
 
 

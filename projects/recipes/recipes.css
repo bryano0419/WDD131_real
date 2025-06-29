@@ -57,12 +57,6 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #d2573a;
 }
-input[type="search"]:focus,
-button[type="submit"]:focus {
-  outline: 3px solid #ea6a47;
-  outline-offset: 2px;
-  box-shadow: 0 0 5px #ea6a47;
-}
 main {
   padding: 2rem;
   display: flex;
@@ -80,41 +74,46 @@ main {
   border: 2px solid #000;
   border-radius: 12px;
   flex-direction: row;
-  padding: 1rem;
+  padding: 0.75rem; 
   margin-bottom: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 700px;
 }
 .recipe-card.visible {
-  display: flex !important;
+  display: flex;
 }
 .recipe-top {
   display: flex;
 }
 .recipe-top img {
   width: 100%;
-  max-width: 280px;
-  height: auto;
+  max-width: 260px;
+  height: 160px; 
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 .recipe-details {
   flex: 1;
-  margin-left: 1rem;
+  margin-left: 2rem;
 }
 .recipe-details h2 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   margin-bottom: 0.5rem;
 }
 .rating span {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: gold;
 }
+
 .description {
   margin-top: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #555;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 footer {
   background-color: #eee;
@@ -180,7 +179,7 @@ footer .social img:hover {
     align-items: center;
     width: 100%;
     max-width: 100%;
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 12px;
     background-color: #ffffff;
     border: 1px solid #ddd;
@@ -193,25 +192,30 @@ footer .social img:hover {
   }
   .recipe-top img {
     width: 100%;
-    max-width: 280px;
-    height: auto;
+    max-width: 260px;
+    height: 160px;
     border-radius: 10px;
     margin-bottom: 1rem;
   }
   .recipe-details {
     margin-left: 0;
-    padding: 0 0.5rem;
+    padding: 0 0.75rem;
     width: 100%;
     text-align: center;
   }
   .recipe-details h2 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     margin-bottom: 0.5rem;
   }
   .description {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-top: 0.5rem;
     color: #555;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   footer {
     padding: 2rem 1rem;
@@ -231,4 +235,34 @@ footer .social img:hover {
     height: 42px;
   }
 }
+.recipe-card.visible {
+  display: flex !important;
+}
 
+input[type="search"]:focus,
+button[type="submit"]:focus {
+  outline: 3px solid #ea6a47;
+  outline-offset: 2px;
+  box-shadow: 0 0 5px #ea6a47;
+}
+
+.extended-details {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.extended-details h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #ea6a47;
+}
+
+.extended-details ul,
+.extended-details ol {
+  margin-left: 1.5rem;
+}
+
+.extended-details li {
+  margin-bottom: 0.3rem;
+}
