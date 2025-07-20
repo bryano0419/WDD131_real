@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tip Archive - Plan Tracker</title>
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+
+<body>
+  <header class="hero">
+    <h1>Plan Tracker - Tip Archive</h1>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h2>Explore Past Tips</h2>
+      <p>Browse and filter previous developer tips by category to reinforce your learning.</p>
+    </section>
+
+    <section class="filter-section">
+      <input type="text" id="filter-input" placeholder="Search tips..." />
+      <button id="filter-button">Filter</button>
+    </section>
+
+    <section id="archive-entries" class="tip-archive">
+      <!-- Tips will be dynamically inserted here -->
+    </section>
+
+    <section class="quote-section">
+      <h2>Motivational Quote</h2>
+      <p id="quote">Loading quote...</p>
+    </section>
+  </main>
+
+  <a href="index.html" class="return-home">← Return to Home</a>
+
+  <script src="scripts/archive.js"></script>
+</body>
+
+</html>
